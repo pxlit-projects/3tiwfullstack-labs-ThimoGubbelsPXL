@@ -8,6 +8,13 @@
         <version>3.3.3</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
+    <modules>
+        <module>employee</module>
+        <module>department</module>
+        <module>organisation</module>
+        <module>notification</module>
+    </modules>
+    <packaging>pom</packaging>
     <groupId>pxl.be.microservices</groupId>
     <artifactId>company</artifactId>
     <version>0.0.1-SNAPSHOT</version>
