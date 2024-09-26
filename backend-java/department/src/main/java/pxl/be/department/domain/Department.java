@@ -20,7 +20,7 @@ public class Department {
     @Getter
     private String name;
     @Getter
-    @OneToMany
+    @Transient
     private List<Employee> employees = new ArrayList<>();
     @Getter
     private String position;

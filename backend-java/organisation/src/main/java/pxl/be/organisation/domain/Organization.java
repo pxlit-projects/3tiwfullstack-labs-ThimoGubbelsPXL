@@ -21,10 +21,10 @@ public class Organization {
     @Getter
     private String name;
     @Getter
-    @OneToMany
+    @Transient
     private List<Employee> employees = new ArrayList<>();
     @Getter
-    @OneToMany
+    @Transient
     private List<Department> departments = new ArrayList<>();
     @Getter
     private String address;
