@@ -30,7 +30,7 @@ public class OrganizationService {
         organizationRepository.deleteById(organizationId);
     }
 
-    public void updateOrganiztionAddress(Long id, String newAddress){
+    public void updateOrganizationAddress(Long id, String newAddress){
         Organization organization = organizationRepository.findById(id).orElseThrow(()-> new ResourceNotFoundException("Organization with Id:" + id + "not found"));
         organization.setAddress(newAddress);
         organizationRepository.save(organization);
