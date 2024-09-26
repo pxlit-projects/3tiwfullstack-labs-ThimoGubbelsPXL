@@ -1,7 +1,7 @@
 package pxl.be.department.domain;
 
 import jakarta.persistence.*;
-import lombok.Getter;
+import lombok.*;
 import pxl.be.employee.domain.Employee;
 
 import java.util.ArrayList;
@@ -9,6 +9,11 @@ import java.util.List;
 
 
 @Entity
+@Table(name="department")
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Department {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,8 +30,7 @@ public class Department {
     @Getter
     private String position;
 
-    public Department() {
-    }
+
 
 
     public void setOrganizationId(Long organizationId) {

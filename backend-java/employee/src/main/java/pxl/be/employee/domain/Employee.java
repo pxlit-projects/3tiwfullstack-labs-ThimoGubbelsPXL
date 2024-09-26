@@ -1,14 +1,16 @@
 package pxl.be.employee.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import lombok.Getter;
-import pxl.be.employee.api.data.EmployeeDTO;
+import jakarta.persistence.*;
+import lombok.*;
+import pxl.be.employee.api.data.EmployeeResponse;
 
 
 @Entity
+@Table(name="employee")
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,10 +29,9 @@ public class Employee {
 
     private String position;
 
-    public Employee() {
-    }
 
-    public Employee(EmployeeDTO employeeDTO){
+
+    public Employee(EmployeeResponse employeeDTO){
         setOrganizationId(employeeDTO.getOrganizationId());
         setDepartmentId(employeeDTO.getDepartmentId());
         setName(employeeDTO.getName());

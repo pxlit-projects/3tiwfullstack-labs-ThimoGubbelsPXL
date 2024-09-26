@@ -1,12 +1,6 @@
 package pxl.be.department.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import lombok.Getter;
-import pxl.be.employee.api.data.EmployeeDTO;
-
 
 
 public class Employee {

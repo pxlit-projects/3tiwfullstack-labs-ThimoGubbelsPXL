@@ -1,31 +1,47 @@
 package pxl.be.employee.controller;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import pxl.be.employee.api.data.EmployeeDTO;
-import pxl.be.employee.service.EmployeeService;
+import pxl.be.employee.api.data.EmployeeRequest;
+import pxl.be.employee.api.data.EmployeeResponse;
+import pxl.be.employee.service.IEmployeeService;
 
 
 @RestController
-@RequestMapping("/employees")
+@RequestMapping("/api/employee")
+@RequiredArgsConstructor
 public class EmployeeController {
-    private final EmployeeService employeeService;
+    private final IEmployeeService employeeService;
 
 
-    public EmployeeController(EmployeeService employeeService) {
-        this.employeeService = employeeService;
+
+
+    @GetMapping
+    public ResponseEntity getEmployees(){
+        return new ResponseEntity(employeeService.getAllEmployees(), HttpStatus.OK);
     }
-
     @GetMapping("/{employeeId}")
-    public EmployeeDTO getEmployee(@PathVariable Long employeeId){
+    public EmployeeResponse getEmployee(@PathVariable Long employeeId){
         return employeeService.getEmployeeById(employeeId);
     }
+
+    @GetMapping("/department/{departmentId")
+    public EmployeeResponse getEmployeeByDepartment(@PathVariable Long departmentId){
+        return employeeService.getEmployeeByDepartmentId(departmentId);
+    }
+
+    @GetMapping("/organization/{organizationId")
+    public EmployeeResponse getEmployeeByOrganization(@PathVariable Long organizationId){
+        return employeeService.getEmployeeByOrganizationid(organizationId);
+    }
     @PostMapping
-    public ResponseEntity<Long> addEmployee(@RequestBody @Validated EmployeeDTO employeeDTO){
-        Long id = employeeService.addEmployee(employeeDTO);
-        return new ResponseEntity<Long>(id, HttpStatus.CREATED);
+    @ResponseStatus(HttpStatus.CREATED)
+    public void addEmployee(@RequestBody @Validated EmployeeRequest employeeRequest){
+         employeeService.addEmployee(employeeRequest);
+
     }
 
     @DeleteMapping("/{employeeId}")

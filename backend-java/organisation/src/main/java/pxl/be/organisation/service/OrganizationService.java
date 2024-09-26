@@ -1,5 +1,6 @@
 package pxl.be.organisation.service;
 
+import lombok.RequiredArgsConstructor;
 import org.aspectj.weaver.ast.Or;
 import org.springframework.stereotype.Service;
 import pxl.be.department.repository.DepartmentRepository;
@@ -9,14 +10,12 @@ import pxl.be.organisation.repository.OrganizationRepository;
 
 
 @Service
-public class OrganizationService {
+@RequiredArgsConstructor
+public class OrganizationService implements IOrganizationService {
 
     private final OrganizationRepository organizationRepository;
 
 
-    public OrganizationService(OrganizationRepository organizationRepository) {
-        this.organizationRepository = organizationRepository;
-    }
 
     public Long addOrganization(Organization organization){
         organizationRepository.save(organization);

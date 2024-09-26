@@ -1,7 +1,7 @@
 package pxl.be.organisation.domain;
 
 import jakarta.persistence.*;
-import lombok.Getter;
+import lombok.*;
 
 
 import java.util.ArrayList;
@@ -9,6 +9,11 @@ import java.util.List;
 
 
 @Entity
+@Table(name="organization")
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Organization {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,8 +33,6 @@ public class Organization {
     @Getter
     private String address;
 
-    public Organization() {
-    }
 
 
     public void setOrganizationId(Long organizationId) {

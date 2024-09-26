@@ -1,5 +1,6 @@
 package pxl.be.organisation.controller;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -7,18 +8,18 @@ import org.springframework.web.bind.annotation.*;
 import pxl.be.department.domain.Department;
 import pxl.be.department.service.DepartmentService;
 import pxl.be.organisation.domain.Organization;
+import pxl.be.organisation.service.IOrganizationService;
 import pxl.be.organisation.service.OrganizationService;
 
 
 @RestController
 @RequestMapping("/employees")
+@RequiredArgsConstructor
 public class OrganizationController {
-    private final OrganizationService organizationService;
+    private final IOrganizationService organizationService;
 
 
-    public OrganizationController(OrganizationService organizationService) {
-        this.organizationService = organizationService;
-    }
+
 
     @GetMapping("/{organizationId}")
     public Organization getOrganiztion(@PathVariable Long organizationId){
