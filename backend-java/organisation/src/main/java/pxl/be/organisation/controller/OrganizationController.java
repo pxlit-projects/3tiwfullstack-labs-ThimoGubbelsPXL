@@ -5,26 +5,46 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import pxl.be.department.domain.Department;
-import pxl.be.department.service.DepartmentService;
+import pxl.be.organisation.api.data.DepartmentAndEmployeeFilter;
+import pxl.be.organisation.api.data.OrganizationResponse;
+import pxl.be.organisation.domain.Department;
+import pxl.be.organisation.domain.Employee;
 import pxl.be.organisation.domain.Organization;
 import pxl.be.organisation.service.IOrganizationService;
-import pxl.be.organisation.service.OrganizationService;
+
+import java.util.List;
 
 
 @RestController
-@RequestMapping("/employees")
+@RequestMapping("/api/organization")
 @RequiredArgsConstructor
 public class OrganizationController {
     private final IOrganizationService organizationService;
 
-
-
+    @GetMapping
+    public ResponseEntity getOrganizations(){
+        return new ResponseEntity(organizationService.getAllOrganizations(), HttpStatus.OK );
+    }
 
     @GetMapping("/{organizationId}")
-    public Organization getOrganiztion(@PathVariable Long organizationId){
+    public OrganizationResponse getOrganization(@PathVariable Long organizationId){
         return organizationService.getOrganizationById(organizationId);
     }
+
+//    @GetMapping("(/{organizationId}/with-departments")
+//    public OrganizationResponse getOrganizationByIdAndDepartments(@PathVariable Long organizationId, @RequestBody List<Department> departments){
+//        return organizationService.getOrganizationByIdAndDepartments(organizationId, departments);
+//    }
+//    @GetMapping("(/{organizationId}/with-departments-and-employees")
+//    public OrganizationResponse getOrganizationByIdAndDepartmentsAndEmployees(@PathVariable Long organizationId, @RequestBody DepartmentAndEmployeeFilter departmentAndEmployeeFilter){
+//        return organizationService.getOrganizationByIdAndDepartmentsAndEmployees(organizationId, departmentAndEmployeeFilter);
+//    }
+//    @GetMapping("(/{organizationId}/with-departments")
+//    public OrganizationResponse getOrganizationByIdAndEmployees(@PathVariable Long organizationId, @RequestBody List<Employee> employees){
+//        return organizationService.getOrganizationByIdAndEmployees(organizationId, employees);
+//    }
+
+
     @PostMapping
     public ResponseEntity<Long> addOrganization(@RequestBody @Validated Organization organization){
         Long id = organizationService.addOrganization(organization);

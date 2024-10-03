@@ -39,11 +39,11 @@ public class DepartmentService implements IDepartmentService {
         return mapToDepartmentResponse(department);
     }
 
-    @Override
-    public DepartmentResponse getDepartmentByOrganizationIdAndEmployees(Long organizationId, List<Employee> employees) {
-        Department department = departmentRepository.findByOrganizationIdAndEmployees(organizationId, employees).orElseThrow(() -> new ResourceNotFoundException("Department with organizationId and employees: " + organizationId + employees +"not found"));
-        return mapToDepartmentResponse(department);
-    }
+//    @Override
+//    public DepartmentResponse getDepartmentByOrganizationIdAndEmployees(Long organizationId, List<Employee> employees) {
+//        Department department = departmentRepository.findByOrganizationIdAndEmployees(organizationId, employees).orElseThrow(() -> new ResourceNotFoundException("Department with organizationId and employees: " + organizationId + employees +"not found"));
+//        return mapToDepartmentResponse(department);
+//    }
 
     @Override
     public DepartmentResponse getDepartmentByOrganizationId(Long organizationId) {

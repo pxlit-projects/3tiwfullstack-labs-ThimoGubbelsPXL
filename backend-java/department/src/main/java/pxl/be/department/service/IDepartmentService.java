@@ -11,7 +11,7 @@ public interface IDepartmentService {
     List<DepartmentResponse> getAllDepartments();
     DepartmentResponse getDepartmentById(Long departmentId);
 
-    DepartmentResponse getDepartmentByOrganizationIdAndEmployees(Long organizationId, List<Employee> employees);
+//    DepartmentResponse getDepartmentByOrganizationIdAndEmployees(Long organizationId, List<Employee> employees);
     DepartmentResponse getDepartmentByOrganizationId(Long organizationId);
     void addDepartment(DepartmentRequest departmentRequest);
 

@@ -12,7 +12,6 @@ import pxl.be.employee.domain.Employee;
 @NoArgsConstructor
 @AllArgsConstructor
 public class EmployeeResponse {
-    private Long id;
 
     private Long organizationId;
 

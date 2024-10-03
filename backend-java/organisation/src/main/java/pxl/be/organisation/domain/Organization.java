@@ -20,8 +20,7 @@ public class Organization {
     @Getter
     private Long id;
 
-    @Getter
-    private Long organizationId;
+
     @Getter
     private String name;
     @Getter
@@ -35,9 +34,7 @@ public class Organization {
 
 
 
-    public void setOrganizationId(Long organizationId) {
-        this.organizationId = organizationId;
-    }
+
 
 
 

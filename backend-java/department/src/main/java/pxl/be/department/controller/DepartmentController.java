@@ -39,11 +39,11 @@ public class DepartmentController {
 
     }
 
-    @GetMapping("/organization/{organizationId}/with-employees")
-    public DepartmentResponse getDepartmentByOrganizationId(@PathVariable Long organizationId, @RequestBody List<Employee> employees){
-        return departmentService.getDepartmentByOrganizationIdAndEmployees(organizationId, employees);
-
-    }
+//    @GetMapping("/organization/{organizationId}/with-employees")
+//    public DepartmentResponse getDepartmentByOrganizationId(@PathVariable Long organizationId, @RequestBody List<Employee> employees){
+//        return departmentService.getDepartmentByOrganizationIdAndEmployees(organizationId, employees);
+//
+//    }
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public void addDepartment(@RequestBody @Validated DepartmentRequest departmentRequest){
