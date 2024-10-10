@@ -4,6 +4,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import pxl.be.employee.api.data.EmployeeRequest;
 import pxl.be.employee.api.data.EmployeeResponse;
+import pxl.be.employee.api.data.NotificationRequest;
+import pxl.be.employee.client.NotificationClient;
 import pxl.be.employee.domain.Employee;
 import pxl.be.employee.exception.ResourceNotFoundException;
 import pxl.be.employee.repository.EmployeeRepository;
@@ -17,10 +19,11 @@ public class EmployeeService implements IEmployeeService {
 
     private final EmployeeRepository employeeRepository;
 
+    private final NotificationClient notificationClient;
 
     public List<EmployeeResponse> getAllEmployees() {
-         List<Employee> employees = employeeRepository.findAll();
-         return employees.stream().map(employee -> mapToEmployeeResponse(employee)).toList();
+        List<Employee> employees = employeeRepository.findAll();
+        return employees.stream().map(employee -> mapToEmployeeResponse(employee)).toList();
     }
 
 
@@ -30,6 +33,12 @@ public class EmployeeService implements IEmployeeService {
                 .name(employeeRequest.getName())
                 .position(employeeRequest.getPosition()).build();
         employeeRepository.save(employee);
+        NotificationRequest notificationRequest = NotificationRequest.builder()
+                .message("Employee created")
+                .sender("Tom")
+                .build();
+        notificationClient.sendNotification(notificationRequest);
+
     }
 
     public EmployeeResponse getEmployeeById(Long employeeId) {

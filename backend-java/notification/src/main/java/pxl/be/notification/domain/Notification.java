@@ -1,6 +1,7 @@
 package pxl.be.notification.domain;
 
-import jakarta.persistence.*;
+
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 
@@ -8,17 +9,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-@Entity
+@AllArgsConstructor
 public class Notification {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     @Getter
     private Long id;
 
 
 
     @Getter
-    private String from;
+    private String sender;
     @Getter
     private String to;
     @Getter
@@ -30,8 +30,8 @@ public class Notification {
     }
 
 
-    public void setFrom(String from) {
-        this.from = from;
+    public void setSender(String sender) {
+        this.sender = sender;
     }
 
     public void setTo(String to) {
