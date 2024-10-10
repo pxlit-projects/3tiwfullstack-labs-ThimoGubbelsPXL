@@ -2,7 +2,7 @@ package pxl.be.department.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
-import pxl.be.employee.domain.Employee;
+
 
 import java.util.ArrayList;
 import java.util.List;

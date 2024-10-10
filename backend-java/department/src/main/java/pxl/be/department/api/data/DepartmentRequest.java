@@ -3,7 +3,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import pxl.be.employee.domain.Employee;
+import pxl.be.department.domain.Employee;
+
 
 import java.util.ArrayList;
 import java.util.List;

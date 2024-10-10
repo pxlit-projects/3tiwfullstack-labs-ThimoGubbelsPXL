@@ -3,13 +3,13 @@ package pxl.be.organisation.service;
 import lombok.RequiredArgsConstructor;
 import org.aspectj.weaver.ast.Or;
 import org.springframework.stereotype.Service;
-import pxl.be.department.repository.DepartmentRepository;
-import pxl.be.employee.exception.ResourceNotFoundException;
+
 import pxl.be.organisation.api.data.DepartmentAndEmployeeFilter;
 import pxl.be.organisation.api.data.OrganizationResponse;
 import pxl.be.organisation.domain.Department;
 import pxl.be.organisation.domain.Employee;
 import pxl.be.organisation.domain.Organization;
+import pxl.be.organisation.exception.ResourceNotFoundException;
 import pxl.be.organisation.repository.OrganizationRepository;
 
 import java.util.List;

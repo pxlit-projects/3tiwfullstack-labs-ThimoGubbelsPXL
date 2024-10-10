@@ -1,7 +1,8 @@
 package pxl.be.department.api.data;
 import jakarta.persistence.Transient;
 import lombok.*;
-import pxl.be.employee.domain.Employee;
+import pxl.be.department.domain.Employee;
+
 
 import java.util.ArrayList;
 import java.util.List;
