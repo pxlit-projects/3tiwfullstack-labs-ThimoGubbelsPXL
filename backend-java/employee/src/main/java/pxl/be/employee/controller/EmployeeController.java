@@ -28,18 +28,18 @@ public class EmployeeController {
         return employeeService.getEmployeeById(employeeId);
     }
 
-    @GetMapping("/department/{departmentId")
+    @GetMapping("/department/{departmentId}")
     public EmployeeResponse getEmployeeByDepartment(@PathVariable Long departmentId){
         return employeeService.getEmployeeByDepartmentId(departmentId);
     }
 
-    @GetMapping("/organization/{organizationId")
+    @GetMapping("/organization/{organizationId}")
     public EmployeeResponse getEmployeeByOrganization(@PathVariable Long organizationId){
         return employeeService.getEmployeeByOrganizationid(organizationId);
     }
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void addEmployee(@RequestBody @Validated EmployeeRequest employeeRequest){
+    public void addEmployee(@RequestBody EmployeeRequest employeeRequest){
          employeeService.addEmployee(employeeRequest);
 
     }
