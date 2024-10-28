@@ -6,8 +6,8 @@ import pxl.be.department.api.data.DepartmentRequest;
 import pxl.be.department.api.data.DepartmentResponse;
 import pxl.be.department.domain.Department;
 import pxl.be.department.domain.Employee;
+import pxl.be.department.exception.ResourceNotFoundException;
 import pxl.be.department.repository.DepartmentRepository;
-import pxl.be.employee.exception.ResourceNotFoundException;
 
 import java.util.List;
 
