@@ -1,6 +1,8 @@
 package pxl.be.employee.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -16,12 +18,15 @@ import pxl.be.employee.service.IEmployeeService;
 public class EmployeeController {
     private final IEmployeeService employeeService;
 
-
+    private static final Logger log = LoggerFactory.getLogger(EmployeeController.class);
 
 
     @GetMapping
     public ResponseEntity getEmployees(){
+        log.info("Getting employees");
+        log.debug("Getting employees");
         return new ResponseEntity(employeeService.getAllEmployees(), HttpStatus.OK);
+
     }
     @GetMapping("/{employeeId}")
     public EmployeeResponse getEmployee(@PathVariable Long employeeId){

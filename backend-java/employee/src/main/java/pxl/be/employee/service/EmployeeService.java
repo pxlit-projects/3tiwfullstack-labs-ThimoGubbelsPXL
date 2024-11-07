@@ -1,6 +1,7 @@
 package pxl.be.employee.service;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.stereotype.Service;
 import pxl.be.employee.api.data.EmployeeRequest;
 import pxl.be.employee.api.data.EmployeeResponse;
@@ -21,8 +22,13 @@ public class EmployeeService implements IEmployeeService {
 
     private final NotificationClient notificationClient;
 
+    private final RabbitTemplate rabbitTemplate;
+
     public List<EmployeeResponse> getAllEmployees() {
         List<Employee> employees = employeeRepository.findAll();
+
+        rabbitTemplate.convertAndSend("myQueue", "Hello, world!");
+
         return employees.stream().map(employee -> mapToEmployeeResponse(employee)).toList();
     }
 
